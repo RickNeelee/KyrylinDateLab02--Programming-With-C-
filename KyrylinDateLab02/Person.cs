@@ -81,7 +81,7 @@ namespace KyrylinDateLab02
                 _age = value;
             }
         }
-        public string WesternZodiac
+        public string SunSign
         {
             get
             {
@@ -89,7 +89,7 @@ namespace KyrylinDateLab02
             }
         }
 
-        public string ChineseZodiac
+        public string ChineseSign
         {
             get
             {

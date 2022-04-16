@@ -199,8 +199,8 @@ namespace KyrylinDateLab02
                         {
                             NameSurnameEmail = _person.Name + " " + _person.Surname + " , " + (_person.Birthdate).Day + "." + (_person.Birthdate).Month + "." + (_person.Birthdate).Year + " ; " + _person.Email + " ; Underaged.";
                         }
-                        WesternZodiac = "Your zodiac sign is " + Person.WesternZodiac;
-                        ChineseZodiac = "Your Chinese zodiac sign is " + Person.ChineseZodiac;
+                        WesternZodiac = "Your zodiac sign is " + Person.SunSign;
+                        ChineseZodiac = "Your Chinese zodiac sign is " + Person.ChineseSign;
                     }
                 }
                 catch (Exception er)
