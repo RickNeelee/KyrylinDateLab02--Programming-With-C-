@@ -1,8 +1,11 @@
 ﻿using System;
+using KyrylinDateLab02.Exceptions;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace KyrylinDateLab02
 {
@@ -54,7 +57,7 @@ namespace KyrylinDateLab02
             }
             private set
             {
-                _email = value;
+                 _email = value;              
             }
         }
 
@@ -120,6 +123,10 @@ namespace KyrylinDateLab02
             _name = Name;
             _surname = Surname;
             _email = Email;
+            if (!(new EmailAddressAttribute().IsValid(Email)))
+                {
+                throw new InvalidEmailException("Error! Invalid Email!");
+                }
             _birthdate = Birthdate;
             _age = GetAgeInt(_birthdate, DateTime.Today);
 
@@ -146,6 +153,14 @@ namespace KyrylinDateLab02
             int AgeFull = (endDate.Year - startDate.Year - 1) +
                 (((endDate.Month > startDate.Month) ||
                 ((endDate.Month == startDate.Month) && (endDate.Day >= startDate.Day))) ? 1 : 0);
+            if (AgeFull < 0)
+            {
+                throw new NotBornException("Error! The person isn't born!");
+            }
+            if (AgeFull > 135)
+            {
+                throw new ProbablyDeadException("Error! The person is probably dead!");
+            }
             return AgeFull;
         }
 
@@ -160,7 +175,19 @@ namespace KyrylinDateLab02
                 return false;
             }
         }
-
+        
+        static bool IsEmailValid(string Email)
+        {
+            try
+            {
+                MailAddress Address = new MailAddress(Email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
         private string GettingZodiac(DateTime birthDate)
         {
             return GetZodiac(birthDate);

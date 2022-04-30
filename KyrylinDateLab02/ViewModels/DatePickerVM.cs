@@ -177,12 +177,12 @@ namespace KyrylinDateLab02
                 try
                 {
                     Person = new Person(Name, Surname, Email, Birthdate);
-                    if ((_person.AgeFull < 0) || (_person.AgeFull > 135))
+                   /* if ((_person.AgeFull < 0) || (_person.AgeFull > 135))
                     {
                         MessageBox.Show("Error! Wrong B-Day!");
                     }
                     else
-                    {
+                    {*/
                         if (_person.IsBirthday)
                         {
                             Age = "Happy birthday! You're turning " + _person.AgeFull + " today!";
@@ -201,7 +201,7 @@ namespace KyrylinDateLab02
                         }
                         WesternZodiac = "Your zodiac sign is " + Person.SunSign;
                         ChineseZodiac = "Your Chinese zodiac sign is " + Person.ChineseSign;
-                    }
+                   // }
                 }
                 catch (Exception er)
                 {
@@ -215,7 +215,10 @@ namespace KyrylinDateLab02
             {
                 return false;
             }
-            else { return true; }
+            else 
+            { 
+                return true; 
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
